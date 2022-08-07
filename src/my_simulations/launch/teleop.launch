@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard" output="log" respawn="false" respawn_delay="0"></node>
+<!--This file is also a trial, not used anywhere in the package-->
+</launch>

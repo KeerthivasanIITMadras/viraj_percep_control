@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="vajra">
+    <xacro:include filename="$(find my_simulations)/urdf/vajraplugins.xacro" />
+
+    <link name="body">
+        <inertial>
+            <mass value="15.0" />
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+        </inertial>
+
+        <geometry>
+            <mesh filename="package://my_simulations/meshes/body/bot2.dae" />
+        </geometry>
+
+        <collision name='body'>
+            <geometry>
+                <mesh filename="package://my_simulations/meshes/body/bot2.dae" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://my_simulations/meshes/body/bot2.dae" />
+            </geometry>
+        </visual>
+    </link>
+    <link name="castorwheel">
+        <inertial>
+            <mass value="1.0" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://my_simulations/meshes/wheels/castors1.dae" />
+            </geometry>
+        </visual>
+        <collision name='castorwheel'>
+            <geometry>
+                <mesh filename="package://my_simulations/meshes/wheels/castors1.dae" />
+            </geometry>
+        </collision>
+        <geometry>
+            <mesh filename="package://my_simulations/meshes/wheels/castors1.dae" />
+        </geometry>
+    </link>
+    <joint name="castorbodyjoint" type="continuous">
+        <origin xyz="0.48 0.0 0.02" rpy="0.0 0.0 0.0" />
+        <parent link="body" />
+        <child link="castorwheel" />
+        <axis xyz="0.0 0.0 1.0" />
+        <limit effort="10000" velocity="1000" />
+        <dynamics damping="1" friction="1" />
+    </joint>
+
+    <link name="righttyre">
+        <inertial>
+            <mass value="4.0" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://my_simulations/meshes/wheels/tyre1.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="package://my_simulations/meshes/wheels/tyre1.dae" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="righttyrebodyjoint" type="continuous">
+        <origin xyz="0.0 -0.323 0" rpy="0.0 0.0 0.0" />
+        <parent link="body" />
+        <child link="righttyre" />
+        <axis xyz="0.0 1.0 0.0" />
+        <limit effort="10000" velocity="1000" />
+        <dynamics damping="1" friction="1" />
+    </joint>
+
+    <link name="lefttyre">
+        <inertial>
+            <mass value="4.0" />
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://my_simulations/meshes/wheels/tyre1.dae" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="package://my_simulations/meshes/wheels/tyre1.dae" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="lefttyrebodyjoint" type="continuous">
+        <origin xyz="0 0.323 0" rpy="0.0 0.0 0.0" />
+        <parent link="body" />
+        <child link="lefttyre" />
+        <axis xyz="0.0 1.0 0.0" />
+        <limit effort="10000" velocity="1000" />
+        <dynamics damping="1" friction="1" />
+    </joint>
+    <link name="robot_footprint"></link>
+    <joint name="robot_footprint_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <child link="body" />
+        <parent link="robot_footprint" />
+
+    </joint>
+    <link name="camera_link">
+    </link>
+    <joint name="camerajoint" type="fixed">
+        <origin xyz="0.73 0 1.18" rpy="0.0 0.45 0.0" />
+        <parent link="body" />
+        <child link="camera_link" />
+    </joint>
+</robot>

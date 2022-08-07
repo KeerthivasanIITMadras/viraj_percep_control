@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node ns="stereo_camera" name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" output="log" respawn="false" respawn_delay="0"></node>
+
+<!--this file is just a trial, not used anywhere-->
+</launch>
