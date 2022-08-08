@@ -5,9 +5,7 @@ My gazebo world with viraj in it
 
 The detected potholes boundaries are mapped on RViz as pointclouds
 
-The pixels generated from the contours are converted to ground frame distances wrt to the camera using inverse perspective mapping (this formula is used):
-
-https://user-images.githubusercontent.com/94188928/183304762-854ea2c4-e679-457e-8b06-b730e416202c.png
+The pixels generated from the contours are converted to ground frame distances wrt to the camera using inverse perspective mapping (this formula is used):![Screenshot from 2022-08-08 16-34-09](https://user-images.githubusercontent.com/94305617/183404275-5cccdc05-60c6-4b90-8699-c894bcb472f1.png)
 
 Projecting pothole boundaries to rviz
 ![Screenshot from 2022-08-08 16-19-47](https://user-images.githubusercontent.com/94305617/183403297-652b2104-572a-4f29-9112-85c0d91d755c.png)
